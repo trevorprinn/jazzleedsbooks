@@ -20,7 +20,7 @@ include('header.php');
 	<tr ng-repeat='b in books'>
 		<td>
 			<img ng-show='b.showcover' src='{{b.cover}}' height='100' ng-click='b.showcover=false'/>
-			<a ng-click='b.showcover=true' ng-hide='b.showcover'>Show</a>
+			<btn ng-click='b.showcover=true' ng-hide='b.showcover' class="btn btn-link">Show</btn>
 		</td>
 		<td><span ng-bind-html="b.title|trusted"/></td>
 		<td>{{b.author_fl}}</td>
@@ -51,7 +51,8 @@ app.controller('booklist', function($scope, $http) {
 	$scope.dtOptions = {
 		'language': {
 			'emptyTable': 'Retrieving book information...'
-		}
+		},
+		'order': [[ 1, 'asc' ]] 
 	};
         
 	$scope.dtColumnDefs = [
