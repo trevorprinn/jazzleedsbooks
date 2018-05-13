@@ -30,13 +30,13 @@ include('header.php');
 		<td>{{b.author_fl}}</td>
 		<td>{{b.ISBN}}</td>
 		<td>{{b.publicationdate}}</td>
-		<td><input type='checkbox' ng-model='b.interested'></td>
+		<td><input type='checkbox' ng-model='b.interested' ng-change='interestedChanged()'></td>
 	</tr>
 	</tbody>
 	
 </table>
 
-<!-- <pre ng-show='response'>{{response|json}}</pre> -->
+<pre ng-show='response'>{{response|json}}</pre>
 
 </div>
 
@@ -71,12 +71,52 @@ app.controller('booklist', function($scope, $http) {
 			$scope.errorMsg = null;
 			$scope.response = null;
 			$scope.books = response.data.query.results.json.books;
+			applyInterested();
 		}, function(response) {
 			$scope.errorMsg = response;
 		});
 		
 	$scope.showCoversChanged = function() {
 		$scope.dtColumnDefs[0].visible = $scope.showCovers;
+	};
+	
+	applyInterested = function() {
+		$scope.errorMsg = null;
+		$http.get('getInterested.php')
+			.then(function(response) {
+				var ints = response.data;
+				for (var i = 0; i < ints.length; i++) {
+					var book_id = ints[i].book_id;
+					for (var key in $scope.books) {
+						if ($scope.books.hasOwnProperty(key)) {
+							var book = $scope.books[key];
+							if (book.book_id == book_id) {
+								book.interested = true;
+								break;
+							}
+						}					
+					}
+				}
+			},
+			function(response) {
+				$scope.errorMsg = response;
+			});
+	};
+	
+	$scope.interestedChanged = function() {
+		var ints = [];
+		for (var key in $scope.books) {
+			if ($scope.books.hasOwnProperty(key)) {
+				var book = $scope.books[key];
+				if (book.interested) ints.push(book);			
+			}
+		}
+		$scope.errorMsg = null;
+		$http.post('saveInterested.php', ints)
+			.then(function(response) {},
+			function(response) {
+				$scope.errorMsg = response;
+			});
 	};
 	
 });
