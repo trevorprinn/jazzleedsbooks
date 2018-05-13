@@ -7,23 +7,15 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand" href="index.html"><?php echo HEADING;?></a>
+	      <a class="navbar-brand" href="index.php">Jazz Leeds Books</a>
 		</div>
 		
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       	<ul class="nav navbar-nav">
-      		<li><a href="calendar.php">Calendar</a></li>
-      		<li><a href="bookings.php">Bookings</a></li>
-      		<li><a href="bookers.php">Bookers</a></li>		
-      		<li class="dropdown">
-	      		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage<span class="caret"></span></a>
-	      		<ul class="dropdown-menu">
-		      		<li><a href="rooms.php">Rooms</a></li>		
-		      		<li><a href="facilities.php">Facilities</a></li>
-		      		<li><a href="bookers_merge.php">Merge Bookers</a></li>
-		      		<li><a href="javascript:backup()">Backup</a></li>	
-		      	</ul>
-      		</li>
+				<li><a href="booklist.php">Book List</a></li>
+				<li><a href="interested.php">Interested List</a></li>
+				<li><a href="http://jazzleeds.org.uk">Jazz Leeds Site</a></li>
+				<li><a href="about.php">About</a></li>     	
       	</ul>
       </div>
 	</div>
