@@ -8,58 +8,83 @@ include('header.php');
 	<div class='alert alert-danger' ng-show='errorMsg'>{{errorMsg}}</div>
 	
 	<a href="booklist.php" class="btn btn-default">Return to Book List</a>
+	
+	<form ng-submit='sendEmail()'>
 
-	<table id='table' class='table table-hover' datatable='ng' dt-options='dtOptions' dt-column-defs='dtColumnDefs'>
-		<thead>
-		<tr>
-			<th>Cover</th>
-			<th>Title</th>
-			<th>Author</th>
-			<th>ISBN</th>
-			<th>Published</th>
-			<th></th>
-		</tr>
-		</thead>
+		<div class="row">
+			<div class="col-md-12">
+				<table id='table' class='table table-hover' datatable='ng' dt-options='dtOptions' dt-column-defs='dtColumnDefs'>
+					<thead>
+					<tr>
+						<th>Cover</th>
+						<th>Title</th>
+						<th>Author</th>
+						<th>ISBN</th>
+						<th>Published</th>
+						<th></th>
+					</tr>
+					</thead>
+					
+					<tbody>
+					<tr ng-repeat='b in books'>
+						<td>
+							<img src='{{b.cover}}' height='100'/>
+						</td>
+						<td><span ng-bind-html="b.title|trusted"/></td>
+						<td>{{b.author_fl}}</td>
+						<td>{{b.ISBN}}</td>
+						<td>{{b.publicationdate}}</td>
+						<td><button class="btn btn-default" ng-click="removeInterest($index)">Remove</button></td>
+					</tr>
+					</tbody>
+					
+				</table>
+			</div>
+		</div>
 		
-		<tbody>
-		<tr ng-repeat='b in books'>
-			<td>
-				<img src='{{b.cover}}' height='100'/>
-			</td>
-			<td><span ng-bind-html="b.title|trusted"/></td>
-			<td>{{b.author_fl}}</td>
-			<td>{{b.ISBN}}</td>
-			<td>{{b.publicationdate}}</td>
-			<td><button class="btn btn-default" ng-click="removeInterest($index)">Remove</button></td>
-		</tr>
-		</tbody>
+		<div class="row">		
+			<div class="col-md-12">
+				<h4>Which gigs should we bring the books along to?</h4>
+				
+				<table class='table' datatable='ng' dt-options='dtGigOptions' dt-column-defs='dtGigColumns'>
+					<thead>
+						<tr>
+							<th>Date</th>
+							<th>>DateOrder</th>
+							<th>Artists</th>
+							<th>Venue</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat='g in gigs'>
+							<td>{{formatDate(g.Date, 'DD/MM/YYYY')}}</td>
+							<td>{{formatDate(g.Date, 'YYMMDDDD')}}</td>
+							<td>{{g.Band}}</td>
+							<td>{{g.Venue}}</td>
+							<td><input type='checkbox' ng-model='g.Going'></td>
+						</tr>
+					</tbody>
+				
+				</table>
+			</div>
+		</div>
 		
-	</table>
+		<div class="row">	
+			<div class="col-md-12">	
+				<h4>Notes</h4>
+				<textarea ng-model='notes' rows="5" cols="60"></textarea>
+			</div>
+		</div>
 	
-	<p>Which gigs should we bring the books along to?</p>
+		<div class="row">	
+			<div class="col-md-12">	
+				<button type="submit" class="btn btn-primary">Send Email</button>
+				<a href="booklist.php" class="btn btn-default">Return to Book List</a>
+			</div>
+		</div>
+	</form>
 	
-	<table class='table' datatable='ng' dt-options='dtGigOptions' dt-column-defs='dtGigColumns'>
-		<thead>
-			<tr>
-				<th>Date</th>
-				<th>Artists</th>
-				<th>Venue</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat='g in gigs'>
-				<td>{{formatDate(g.Date, 'DD/MM/YYYY')}}</td>
-				<td>{{g.Band}}</td>
-				<td>{{g.Venue}}</td>
-				<td><input type='checkbox' ng-model='g.Going'></td>
-			</tr>
-		</tbody>
-	
-	</table>
-
-	<a href="booklist.php" class="btn btn-default">Return to Book List</a>
-
 </div>
 
 <script>
@@ -77,7 +102,7 @@ app.controller('interested', function($scope, $http) {
 
 	$scope.dtOptions = {
 		'language': {
-			'emptyTable': 'No books marked for interest...'
+			'emptyTable': 'You haven\'t marked any books as interesting...'
 		},
 		'order': [[ 1, 'asc' ]] 
 	};
@@ -90,11 +115,12 @@ app.controller('interested', function($scope, $http) {
 		'language': {
 			'emptyTable': 'No gigs???'
 		},
-		'order': []
+		'order': [[1, 'asc']]
 	};
 
 	$scope.dtGigColumns = [
-		{ targets: [0, 1, 2, 3], orderable: false }
+		{ targets: [0, 1, 2, 3, 4], orderable: false },
+		{ targets: [1], visible: false }
 	];
 	
 	$http.post('getInterested.php')
