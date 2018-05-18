@@ -76,6 +76,15 @@ include('header.php');
 				<textarea ng-model='notes' rows="5" cols="60"></textarea>
 			</div>
 		</div>
+		
+		<div class="row">
+			<div class="col-md-2">
+				<label for="email">Your Email address</label>
+			</div>
+			<div class="col-md-10">
+				<input ng-model="email" type="email"/>
+			</div>
+		</div>
 	
 		<div class="row">	
 			<div class="col-md-12">	
@@ -98,7 +107,7 @@ app.filter('trusted', ['$sce', function($sce) {
 	};
 }]);
 
-app.controller('interested', function($scope, $http) {
+app.controller('interested', function($scope, $http, $window) {
 
 	$scope.dtOptions = {
 		'language': {
@@ -140,6 +149,31 @@ app.controller('interested', function($scope, $http) {
 	$scope.formatDate = function(d, f) {
 		return moment(d).format(f);
 	};
+
+	$scope.sendEmail = function() {
+		var gigs = [];
+		for (var i = 0; i < $scope.gigs.length; i++) {
+			if ($scope.gigs[i].Going) gigs.push(gigs[i]);
+		}
+		var data = {
+			'books': $scope.books,
+			'gigs': gigs,
+			'notes': $scope.notes,
+			'email': $scope.email
+		};
+		$http.post('SendEmail.php', data)
+			.then(function(response) {
+				$scope.response = response;
+				$scope.error = null;
+				if (response.data.success) {
+					alert('Thank you. Your email has been sent.');
+					$window.location.href = 'index.php';
+				} else {
+					$scope.errorMsg = response.data.error;
+				}
+			});
+	};	
+	
 });
 
 </script>
