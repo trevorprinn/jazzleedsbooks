@@ -1,0 +1,67 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+span.form-control {
+    max-width: 280px;
+}
+
+p.form-control {
+    max-width: 280px;
+    height: auto;
+}
+
+textarea.nomaxwidth,
+p.nomaxwidth,
+span.nomaxwidth {
+    max-width: none;
+}
+
+h2.customername,
+h3.orderheading {
+    text-align: center
+}
+
+input[type=checkbox].checkbox-medium {
+    width: 20px;
+    height: 20px;
+}
+
+td.number,
+td.number input,
+th.number {
+    text-align: right
+}
+
+td.centred {
+    text-align: center
+}
+
+.navbar-inverse {
+    background-color: white
+}
+
+.navbar-inverse .navbar-nav li a:hover {
+    color: black;
+}

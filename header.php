@@ -26,6 +26,8 @@
 	crossorigin="anonymous">
 </script>
 
+<link rel="stylesheet" href="site.css">
+
 <?php
 if ((isset($usesDatatables) && $usesDatatables == 1) || (isset($usesCalendar) && $usesCalendar == 1)) {
 	echo "<script src='//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js'></script>

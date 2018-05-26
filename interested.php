@@ -57,7 +57,7 @@ include('header.php');
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat='g in gigs'>
+						<tr ng-repeat='g in gigs' ng-show="gigInFuture(g)">
 							<td>{{formatDate(g.Date, 'DD/MM/YYYY')}}</td>
 							<td>{{formatDate(g.Date, 'YYMMDDDD')}}</td>
 							<td>{{g.Band}}</td>
@@ -88,7 +88,7 @@ include('header.php');
 	
 		<div class="row">	
 			<div class="col-md-12">	
-				<button type="submit" class="btn btn-primary">Send Email</button>
+				<button type="submit" class="btn btn-primary" ng-disabled="!checkInfo()">Send Email</button>
 				<a href="booklist.php" class="btn btn-default">Return to Book List</a>
 			</div>
 		</div>
@@ -149,6 +149,10 @@ app.controller('interested', function($scope, $http, $window) {
 	$scope.formatDate = function(d, f) {
 		return moment(d).format(f);
 	};
+	
+	$scope.gigInFuture = function(gig) {
+		return moment(gig.Date).isAfter(moment(), 'day');	
+	};
 
 	$scope.sendEmail = function() {
 		var gigs = [];
@@ -173,6 +177,10 @@ app.controller('interested', function($scope, $http, $window) {
 				}
 			});
 	};	
+	
+	$scope.checkInfo = function() {
+		return false;
+	};
 	
 });
 

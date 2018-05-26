@@ -7,34 +7,47 @@ include('header.php');
 
 <div class='alert alert-danger' ng-show='errorMsg'>{{errorMsg}}</div>
 
-<p><input type='checkbox' ng-model='showCovers' ng-change='showCoversChanged()'>Show Covers</p>
+<form class="form-horizontal">
 
-<table id='table' class='table table-hover' datatable='ng' dt-options='dtOptions' dt-column-defs='dtColumnDefs'>
-	<thead>
-	<tr>
-		<th>Cover</th>
-		<th>Title</th>
-		<th>Author</th>
-		<th>ISBN</th>
-		<th>Published</th>
-		<th>Interested</th>
-	</tr>
-	</thead>
+	<div class="form-group">
+		<label class="col-md-2 control-label">Show Covers</label>
+		<div class="col-md-10">
+			<input type="checkbox" class="form-control checkbox-medium" ng-model="showCovers" ng-change='showCoversChanged()'/>
+		</div>
+	</div>
 	
-	<tbody>
-	<tr ng-repeat='b in books'>
-		<td>
-			<img src='{{b.cover}}' height='100'/>
-		</td>
-		<td><span ng-bind-html="b.title|trusted"/></td>
-		<td>{{b.author_fl}}</td>
-		<td>{{b.ISBN}}</td>
-		<td>{{b.publicationdate}}</td>
-		<td><input type='checkbox' ng-model='b.interested' ng-change='interestedChanged()'></td>
-	</tr>
-	</tbody>
+	<table id='table' class='table table-hover' datatable='ng' dt-options='dtOptions' dt-column-defs='dtColumnDefs'>
+		<thead>
+		<tr>
+			<th>Cover</th>
+			<th>Title</th>
+			<th>Author</th>
+			<th>ISBN</th>
+			<th>Published</th>
+			<th>Interested</th>
+		</tr>
+		</thead>
+		
+		<tbody>
+		<tr ng-repeat='b in books'>
+			<td>
+				<img src='{{b.cover}}' height='100'/>
+			</td>
+			<td><span ng-bind-html="b.title|trusted"/></td>
+			<td>{{b.author_fl}}</td>
+			<td>{{b.ISBN}}</td>
+			<td>{{b.publicationdate}}</td>
+			<td><input type='checkbox' ng-model='b.interested' ng-change='interestedChanged()'></td>
+		</tr>
+		</tbody>
+		
+	</table>
 	
-</table>
+	<div class="col-md-12">
+		<a href="interested.php" class="btn btn-primary">Interested List</a>
+	</div>
+
+</form>
 
 <pre ng-show='response'>{{response|json}}</pre>
 
