@@ -59,7 +59,7 @@ include('header.php');
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat='g in gigs' ng-show="gigInFuture(g)">
+						<tr ng-repeat='g in gigs'>
 							<td><input type='checkbox' ng-model='g.Going'></td>
 							<td>{{formatDate(g.Date, 'DD/MM/YYYY')}}</td>
 							<td>{{formatDate(g.Date, 'YYMMDDDD')}}</td>
@@ -76,7 +76,7 @@ include('header.php');
 		
 		<div class="row body-content">	
 			<div class="form-group">
-				<label for="name" class="col-md-2 control-label">Your Name (optional)</label>
+				<label for="name" class="col-md-2 control-label">Your Name</label>
 				<div class="col-md-10">
 					<input ng-model="name" type="text" class="form-control"/>
 				</div>
@@ -99,10 +99,13 @@ include('header.php');
 	
 		<div class="row body-content">
 			<div class="form-group">
-			<div class="col-md-12">	
-				<button type="submit" class="btn btn-primary" ng-disabled="!checkInfo()">Send Email</button>
-				<a href="booklist.php" class="btn btn-default">Return to Book List</a>
+				<div class="col-md-12">	
+					<button type="submit" class="btn btn-primary" ng-disabled="!checkInfo()">Send Email</button>
+					<a href="booklist.php" class="btn btn-default">Return to Book List</a>
+				</div>
 			</div>
+			<div class="alert alert-info" ng-hide="checkInfo()">
+				You must select some books, at least one gig and enter your name to send a request email.
 			</div>
 		</div>
 	</form>
@@ -151,7 +154,13 @@ app.controller('interested', function($scope, $http, $window) {
 		});
 	$http.post('getGigList.php')
 		.then(function(response) {
-			$scope.gigs = response.data;
+			var gigs = response.data;
+			$scope.gigs = [];
+			var now = moment();
+			for (var i = 0; i < gigs.length; i++) {
+				if (moment(gigs[i].Date).isAfter(now, 'day'))
+					$scope.gigs.push(gigs[i]);
+			}
 		});
 		
 	$scope.removeInterest = function(ix) {
@@ -163,20 +172,22 @@ app.controller('interested', function($scope, $http, $window) {
 		return moment(d).format(f);
 	};
 	
-	$scope.gigInFuture = function(gig) {
-		return moment(gig.Date).isAfter(moment(), 'day');	
-	};
-
-	$scope.sendEmail = function() {
+	getGoingGigs = function() {
 		var gigs = [];
 		for (var i = 0; i < $scope.gigs.length; i++) {
 			if ($scope.gigs[i].Going) gigs.push(gigs[i]);
 		}
+		return gigs;
+	};
+	
+	$scope.sendEmail = function() {
+		var gigs = getGoingGigs();
 		var data = {
 			'books': $scope.books,
 			'gigs': gigs,
 			'notes': $scope.notes,
-			'email': $scope.email
+			'email': $scope.email,
+			'name': $scope.name
 		};
 		$http.post('SendEmail.php', data)
 			.then(function(response) {
@@ -192,7 +203,7 @@ app.controller('interested', function($scope, $http, $window) {
 	};	
 	
 	$scope.checkInfo = function() {
-		return false;
+		return $scope.books.length > 0 && getGoingGigs().length > 0 && $scope.name;
 	};
 	
 });
