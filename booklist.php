@@ -43,8 +43,10 @@ include('header.php');
 		
 	</table>
 	
-	<div class="col-md-12">
-		<a href="interested.php" class="btn btn-primary">Interested List</a>
+	<div class="form-group">
+		<div class="col-md-12">
+			<a href="interested.php" class="btn btn-primary">Interested List</a>
+		</div>
 	</div>
 
 </form>
