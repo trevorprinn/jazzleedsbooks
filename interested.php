@@ -3,13 +3,13 @@ $usesDatatables = 1;
 include('header.php'); 
 ?>
 
-<div ng-cloak ng-app='jazzbooks' ng-controller='interested'>
+<div ng-cloak ng-app='jazzbooks' ng-controller='interested' class='body-content'>
 
 	<div class='alert alert-danger' ng-show='errorMsg'>{{errorMsg}}</div>
 	
 	<a href="booklist.php" class="btn btn-default">Return to Book List</a>
 	
-	<form ng-submit='sendEmail()'>
+	<form ng-submit='sendEmail()' class="form-horizontal">
 
 		<div class="row">
 			<div class="col-md-12">
@@ -42,6 +42,8 @@ include('header.php');
 			</div>
 		</div>
 		
+		<hr/>
+		
 		<div class="row">		
 			<div class="col-md-12">
 				<h4>Which gigs should we bring the books along to?</h4>
@@ -49,20 +51,20 @@ include('header.php');
 				<table class='table' datatable='ng' dt-options='dtGigOptions' dt-column-defs='dtGigColumns'>
 					<thead>
 						<tr>
+							<th></th>
 							<th>Date</th>
 							<th>>DateOrder</th>
 							<th>Artists</th>
 							<th>Venue</th>
-							<th></th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr ng-repeat='g in gigs' ng-show="gigInFuture(g)">
+							<td><input type='checkbox' ng-model='g.Going'></td>
 							<td>{{formatDate(g.Date, 'DD/MM/YYYY')}}</td>
 							<td>{{formatDate(g.Date, 'YYMMDDDD')}}</td>
 							<td>{{g.Band}}</td>
 							<td>{{g.Venue}}</td>
-							<td><input type='checkbox' ng-model='g.Going'></td>
 						</tr>
 					</tbody>
 				
@@ -70,26 +72,37 @@ include('header.php');
 			</div>
 		</div>
 		
-		<div class="row">	
-			<div class="col-md-12">	
-				<h4>Notes</h4>
-				<textarea ng-model='notes' rows="5" cols="60"></textarea>
-			</div>
-		</div>
+		<hr/>
 		
-		<div class="row">
-			<div class="col-md-2">
-				<label for="email">Your Email address</label>
+		<div class="row body-content">	
+			<div class="form-group">
+				<label for="name" class="col-md-2 control-label">Your Name (optional)</label>
+				<div class="col-md-10">
+					<input ng-model="name" type="text" class="form-control"/>
+				</div>
 			</div>
-			<div class="col-md-10">
-				<input ng-model="email" type="email"/>
+			
+			<div class="form-group">
+				<label for="email" class="col-md-2 control-label">Your Email address (optional)</label>
+				<div class="col-md-10">
+					<input ng-model="email" type="email" class="form-control"/>
+				</div>
+			</div>
+			
+			<div class="form-group">	
+				<label for="notes" class="col-md-2 control-label">Notes</label>
+				<div class="col-md-10">
+					<textarea ng-model='notes' rows="5" cols="20" class="form-control nomaxwidth"></textarea>
+				</div>
 			</div>
 		</div>
 	
-		<div class="row">	
+		<div class="row body-content">
+			<div class="form-group">
 			<div class="col-md-12">	
 				<button type="submit" class="btn btn-primary" ng-disabled="!checkInfo()">Send Email</button>
 				<a href="booklist.php" class="btn btn-default">Return to Book List</a>
+			</div>
 			</div>
 		</div>
 	</form>
@@ -124,12 +137,12 @@ app.controller('interested', function($scope, $http, $window) {
 		'language': {
 			'emptyTable': 'No gigs???'
 		},
-		'order': [[1, 'asc']]
+		'order': [[2, 'asc']]
 	};
 
 	$scope.dtGigColumns = [
 		{ targets: [0, 1, 2, 3, 4], orderable: false },
-		{ targets: [1], visible: false }
+		{ targets: [2], visible: false }
 	];
 	
 	$http.post('getInterested.php')

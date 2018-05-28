@@ -3,7 +3,7 @@ $usesDatatables = 1;
 include('header.php'); 
 ?>
 
-<div ng-cloak ng-app='jazzbooks' ng-controller='booklist'>
+<div ng-cloak ng-app='jazzbooks' ng-controller='booklist' class='body-content'>
 
 <div class='alert alert-danger' ng-show='errorMsg'>{{errorMsg}}</div>
 
