@@ -57,10 +57,14 @@ if (isset($usesCalendar) && $usesCalendar == 1) {
 }
 ?>
 
+</head>
+
+<body>
+
+<div class="container">
+
 <?php
 include('navbar.php');
 ?>
 
-</head>
 
-<body>

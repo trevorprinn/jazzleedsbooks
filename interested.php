@@ -109,7 +109,6 @@ include('header.php');
 			</div>
 		</div>
 	</form>
-	
 </div>
 
 <script>
