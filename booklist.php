@@ -33,7 +33,10 @@ include('header.php');
 			<td>
 				<img src='{{b.cover}}' height='100'/>
 			</td>
-			<td><span ng-bind-html="b.title|trusted"/></td>
+			<td>
+				<span ng-show='b.ISBN_cleaned'><a href="http://www.librarything.com/isbn/{{b.ISBN_cleaned}}" target="_blank"><span ng-bind-html="b.title|trusted"/></a></span>
+				<span ng-hide='b.ISBN_cleaned' ng-bind-html="b.title|trusted"/>
+			</td>
 			<td>{{b.author_fl}}</td>
 			<td>{{b.ISBN}}</td>
 			<td>{{b.publicationdate}}</td>
