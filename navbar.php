@@ -14,7 +14,8 @@
       	<ul class="nav navbar-nav">
 				<li><a href="booklist.php">Book List</a></li>
 				<li><a href="interested.php">Interested List</a></li>
-				<li><a href="http://jazzleeds.org.uk" target="_blank">Jazz Leeds Site</a></li>
+				<li><a href="http://jazzleeds.org.uk" target="_blank">Jazz Leeds</a></li>
+				<li><a href="http://www.librarything.com/catalog/jazzleeds" target="_blank">LibraryThing</a></li>
 				<li><a href="about.php">About</a></li>     	
       	</ul>
       </div>
