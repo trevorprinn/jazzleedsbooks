@@ -8,11 +8,13 @@ include('header.php');
 	<div class='alert alert-danger' ng-show='errorMsg'>{{errorMsg}}</div>
 	
 	<a href="booklist.php" class="btn btn-default">Return to Book List</a>
+	<p>&nbsp;</p>
 	
 	<form ng-submit='sendEmail()' class="form-horizontal">
 
-		<div class="row">
-			<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">Interesting Books</div>
+			<div class="panel-body">
 				<table id='table' class='table table-hover' datatable='ng' dt-options='dtOptions' dt-column-defs='dtColumnDefs'>
 					<thead>
 					<tr>
@@ -42,12 +44,10 @@ include('header.php');
 			</div>
 		</div>
 		
-		<hr/>
-		
-		<div class="row">		
-			<div class="col-md-12">
-				<h4>Which gigs should we bring the books along to?</h4>
-				
+		<div class="panel panel-default">
+			<div class="panel-heading">Which gigs should we bring the books along to?</div>		
+			<div class="panel-body">
+			
 				<table class='table' datatable='ng' dt-options='dtGigOptions' dt-column-defs='dtGigColumns'>
 					<thead>
 						<tr>
@@ -72,31 +72,32 @@ include('header.php');
 			</div>
 		</div>
 		
-		<hr/>
-		
-		<div class="row body-content">	
-			<div class="form-group">
-				<label for="name" class="col-md-2 control-label">Your Name</label>
-				<div class="col-md-10">
-					<input ng-model="name" type="text" class="form-control"/>
+		<div class="panel panel-primary">
+			<div class="panel-heading">Your details</div>
+			<div class="panel-body">	
+				<div class="form-group">
+					<label for="name" class="col-md-2 control-label">Your Name</label>
+					<div class="col-md-10">
+						<input ng-model="name" type="text" class="form-control"/>
+					</div>
 				</div>
-			</div>
-			
-			<div class="form-group">
-				<label for="email" class="col-md-2 control-label">Your Email address (optional)</label>
-				<div class="col-md-10">
-					<input ng-model="email" type="email" class="form-control"/>
+				
+				<div class="form-group">
+					<label for="email" class="col-md-2 control-label">Your Email address (optional)</label>
+					<div class="col-md-10">
+						<input ng-model="email" type="email" class="form-control"/>
+					</div>
 				</div>
-			</div>
-			
-			<div class="form-group">	
-				<label for="notes" class="col-md-2 control-label">Notes</label>
-				<div class="col-md-10">
-					<textarea ng-model='notes' rows="5" cols="20" class="form-control nomaxwidth"></textarea>
+				
+				<div class="form-group">	
+					<label for="notes" class="col-md-2 control-label">Notes</label>
+					<div class="col-md-10">
+						<textarea ng-model='notes' rows="5" cols="20" class="form-control nomaxwidth"></textarea>
+					</div>
 				</div>
 			</div>
 		</div>
-	
+		
 		<div class="row body-content">
 			<div class="form-group">
 				<div class="col-md-12">	

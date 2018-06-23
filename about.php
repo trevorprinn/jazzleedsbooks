@@ -2,16 +2,22 @@
 include('header.php'); 
 ?>
 
-<div class="body-content">
+<div class="panel panel-default">
+	<div class="panel-heading">Privacy</div>
+	<div class="panel-body">
+		<p>
+		We do not store any information other than the minimum you have input that we need to get
+		the books to you (which is only what you type in). This information is used only for this purpose;
+		we don't even add any email addresses entered on this site to the Jazz Leeds mailing list.
+		</p>
+	</div>
+</div>
 
-<p>This site was written for <a href="http://jazzleeds.org.uk">Jazz Leeds</a> by <a href="mailto:trev@tprinn.co.uk">Trevor Prinn</a>.</p>
-
-<p>
-We do not store any information other than the minimum you have input that we need to get
-the books to you (which is only what you type in). This information is used only for this purpose;
-we don't even add any email addresses entered on this site to the Jazz Leeds mailing list.
-</p>
-
+<div class="panel panel-default">
+	<div class="panel-heading">Bragging</div>
+	<div class="panel-body">
+		<p>This site was written for <a href="http://jazzleeds.org.uk">Jazz Leeds</a> by <a href="mailto:trev@tprinn.co.uk">Trevor Prinn</a>.</p>
+	</div>
 </div>
 
 <?php include('footer.php'); ?>
