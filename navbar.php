@@ -16,7 +16,8 @@
 				<li><a href="interested.php">Interested List</a></li>
 				<li><a href="http://jazzleeds.org.uk" target="_blank">Jazz Leeds</a></li>
 				<li><a href="http://www.librarything.com/catalog/jazzleeds" target="_blank">LibraryThing</a></li>
-				<li><a href="about.php">About</a></li>     	
+				<li><a href="about.php">About</a></li>  
+				<li><a href="help.php">Help</a></li>   	
       	</ul>
       </div>
 	</div>
