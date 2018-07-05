@@ -11,8 +11,8 @@ go to the Interested list, and send us a message so we can bring the books along
 
 <div class="panel panel-primary">
 	<div class="panel-heading">
-		<h3 class="panel-title">
-			<a class="accordian-toggle collapsed" data-toggle="collapse" data-target="#bio">Bill Sheldrake (28/09/1934 - 20/11/2011)</a>
+		<h3 class="panel-title accordian-toggle collapsed" data-toggle="collapse" data-target="#bio">
+			Bill Sheldrake (28/09/1934 - 20/11/2011)
 		</h3>
 	</div>
 	<div id="bio" class="panel-collapse collapse">

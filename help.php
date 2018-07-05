@@ -4,8 +4,8 @@
 
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<h3 class="panel-title">
-			<a class="accordian-toggle collapsed" data-toggle="collapse" data-target="#booklist">Book List</a>
+		<h3 class="panel-title accordian-toggle collapsed" data-toggle="collapse" data-target="#booklist">
+			Book List
 		</h3>
 	</div>
 	<div id="booklist" class="panel-collapse collapse">
@@ -38,8 +38,8 @@
 
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<div class="panel-title">
-			<a class="accordian-toggle collapsed" data-toggle="collapse" data-target="#interested">Interested List</a>
+		<div class="panel-title accordian-toggle collapsed" data-toggle="collapse" data-target="#interested">
+			Interested List
 		</div>
 	</div>
 	<div id="interested" class="panel-collapse collapse">
@@ -71,8 +71,8 @@
 
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<div class="panel-title">
-			<a class="accordian-toggle collapsed" data-toggle="collapse" data-target="#librarything">LibraryThing</a>
+		<div class="panel-title accordian-toggle collapsed" data-toggle="collapse" data-target="#librarything">
+			LibraryThing
 		</div>
 	</div>
 	<div id="librarything" class="panel-collapse collapse">

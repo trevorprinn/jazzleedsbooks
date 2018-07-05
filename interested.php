@@ -13,86 +13,97 @@ include('header.php');
 	<form ng-submit='sendEmail()' class="form-horizontal">
 
 		<div class="panel panel-default">
-			<div class="panel-heading">Interesting Books</div>
-			<div class="panel-body">
-				<table id='table' class='table table-hover' datatable='ng' dt-options='dtOptions' dt-column-defs='dtColumnDefs'>
-					<thead>
-					<tr>
-						<th>Cover</th>
-						<th>Title</th>
-						<th>Author</th>
-						<th>ISBN</th>
-						<th>Published</th>
-						<th></th>
-					</tr>
-					</thead>
-					
-					<tbody>
-					<tr ng-repeat='b in books'>
-						<td>
-							<img src='{{b.cover}}' height='100'/>
-						</td>
-						<td><span ng-bind-html="b.title|trusted"/></td>
-						<td>{{b.author_fl}}</td>
-						<td>{{b.ISBN}}</td>
-						<td>{{b.publicationdate}}</td>
-						<td><button class="btn btn-default" ng-click="removeInterest($index)">Remove</button></td>
-					</tr>
-					</tbody>
-					
-				</table>
+			<div class="panel-heading">
+				<h3 class="panel-title accordian-toggle" data-toggle="collapse" data-target="#books">Interesting Books</h3>
+			</div>
+			<div id="books" class="panel-collapse collapse in">
+				<div class="panel-body">
+					<table id='table' class='table table-hover' datatable='ng' dt-options='dtOptions' dt-column-defs='dtColumnDefs'>
+						<thead>
+						<tr>
+							<th>Cover</th>
+							<th>Title</th>
+							<th>Author</th>
+							<th>ISBN</th>
+							<th>Published</th>
+							<th></th>
+						</tr>
+						</thead>
+						
+						<tbody>
+						<tr ng-repeat='b in books'>
+							<td>
+								<img src='{{b.cover}}' height='100'/>
+							</td>
+							<td><span ng-bind-html="b.title|trusted"/></td>
+							<td>{{b.author_fl}}</td>
+							<td>{{b.ISBN}}</td>
+							<td>{{b.publicationdate}}</td>
+							<td><button class="btn btn-default" ng-click="removeInterest($index)">Remove</button></td>
+						</tr>
+						</tbody>
+						
+					</table>
+				</div>
 			</div>
 		</div>
 		
 		<div class="panel panel-default">
-			<div class="panel-heading">Which gigs should we bring the books along to?</div>		
-			<div class="panel-body">
-			
-				<table class='table' datatable='ng' dt-options='dtGigOptions' dt-column-defs='dtGigColumns'>
-					<thead>
-						<tr>
-							<th></th>
-							<th>Date</th>
-							<th>>DateOrder</th>
-							<th>Artists</th>
-							<th>Venue</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr ng-repeat='g in gigs'>
-							<td><input type='checkbox' ng-model='g.Going'></td>
-							<td>{{formatDate(g.Date, 'DD/MM/YYYY')}}</td>
-							<td>{{formatDate(g.Date, 'YYMMDDDD')}}</td>
-							<td>{{g.Band}}</td>
-							<td>{{g.Venue}}</td>
-						</tr>
-					</tbody>
-				
-				</table>
+			<div class="panel-heading">
+				<h3 class="panel-title accordian-toggle" data-toggle="collapse" data-target="#gigs">Which gigs should we bring the books along to?</h3>
+			</div>		
+			<div id="gigs" class="panel-collapse collapse in">
+				<div class="panel-body">
+					<table class='table' datatable='ng' dt-options='dtGigOptions' dt-column-defs='dtGigColumns'>
+						<thead>
+							<tr>
+								<th></th>
+								<th>Date</th>
+								<th>>DateOrder</th>
+								<th>Artists</th>
+								<th>Venue</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat='g in gigs'>
+								<td><input type='checkbox' ng-model='g.Going'></td>
+								<td>{{formatDate(g.Date, 'DD/MM/YYYY')}}</td>
+								<td>{{formatDate(g.Date, 'YYMMDDDD')}}</td>
+								<td>{{g.Band}}</td>
+								<td>{{g.Venue}}</td>
+							</tr>
+						</tbody>
+					
+					</table>
+				</div>
 			</div>
 		</div>
 		
 		<div class="panel panel-primary">
-			<div class="panel-heading">Your details</div>
-			<div class="panel-body">	
-				<div class="form-group">
-					<label for="name" class="col-md-2 control-label">Your Name</label>
-					<div class="col-md-10">
-						<input ng-model="name" type="text" class="form-control"/>
+			<div class="panel-heading">
+				<h3 class="panel-title accordian-toggle" data-toggle="collapse" data-target="#details">Your details</h3>
+			</div>
+			<div id="details" class="panel-collapse collapse in">			
+				<div class="panel-body">	
+					<div class="form-group">
+						<label for="name" class="col-md-2 control-label">Your Name</label>
+						<div class="col-md-10">
+							<input ng-model="name" type="text" class="form-control"/>
+						</div>
 					</div>
-				</div>
-				
-				<div class="form-group">
-					<label for="email" class="col-md-2 control-label">Your Email address (optional)</label>
-					<div class="col-md-10">
-						<input ng-model="email" type="email" class="form-control"/>
+					
+					<div class="form-group">
+						<label for="email" class="col-md-2 control-label">Your Email address (optional)</label>
+						<div class="col-md-10">
+							<input ng-model="email" type="email" class="form-control"/>
+						</div>
 					</div>
-				</div>
-				
-				<div class="form-group">	
-					<label for="notes" class="col-md-2 control-label">Notes</label>
-					<div class="col-md-10">
-						<textarea ng-model='notes' rows="5" cols="20" class="form-control nomaxwidth"></textarea>
+					
+					<div class="form-group">	
+						<label for="notes" class="col-md-2 control-label">Notes</label>
+						<div class="col-md-10">
+							<textarea ng-model='notes' rows="5" cols="20" class="form-control nomaxwidth"></textarea>
+						</div>
 					</div>
 				</div>
 			</div>
