@@ -13,7 +13,7 @@ try {
 	set_error_handler('errorhandler', E_ALL);
 	$postdata = file_get_contents('php://input');
 
-	$sent = mail('trev@tprinn.co.uk', 'Jazz Leeds Book Request', $postdata, 'From: trev@tprinn.co.uk');
+	$sent = mail('request@jazzleedsbooks.org.uk', 'Jazz Leeds Book Request', $postdata, 'From: noreply@jazzleedsbooks.org.uk');
 	if ($sent) {
 		$result['success'] = true;
 	} else {
