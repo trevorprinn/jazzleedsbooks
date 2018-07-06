@@ -15,6 +15,8 @@
 			have available. There are far too many books for us to bring them all along to every gig, so
 			if you are interested in seeing or buying any of them you will need to let us know which ones you
 			are interested in, and which gigs you will be going to.</p>
+			<p>It can take a few seconds for the list to appear. This is because it has to retrieve it from LibraryThing
+			every time. Their licence does not allow us to store the list on this website.</p>
 			
 			<p>Initially, you will just see a page of the first 10 books (in alphabetical order by title). You can:
 			<ul>
@@ -25,6 +27,7 @@
 			<li>Search for books by an author or with a particular word in the title by typing into
 			the Search box at the top right.</li>
 			<li>Show the book covers, where available, by ticking the box above the list.</li> 
+			<li>Get more information on some books (the ones with an ISBN) from LibraryThing by clicking on their titles.</li>
 			</ul></p>
 			
 			<p>When you see a book that you are interested in, tick the box in the "Interested" column.</p>

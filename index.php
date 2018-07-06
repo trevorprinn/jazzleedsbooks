@@ -4,10 +4,29 @@ include('header.php');
 
 <h1>Leeds Jazz Book Collection</h1>
 
-<p>Info will go here.</p>
-
-<p>Go to the <a href="booklist.php">Book List</a>, select the books you are interested in, then
-go to the Interested list, and send us a message so we can bring the books along to a gig.</p>
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h3 class="panel-title accordian-toggle" data-toggle="collapse" data-target="#background">Background</h3>
+	</div>
+	<div id="background" class="panel-collapse collapse in">
+		<div class="panel-body">
+			<p><a href="http://jazzleeds.org.uk" target="_blank">Jazz Leeds</a> have received a donation of over 300 books about Jazz from the
+			collection of the late Bill Sheldrake. These books are available for individual sale on a Pay As You Feel basis to anyone who has
+			an interest in purchasing them.</p>
+			<p>As there are far too many books to bring along to gigs for people to peruse, this site has been set up so that
+			anyone interested can flag which books they may be interested in, and which gigs they will be attending, so that
+			we can try to get the books to them.</p>
+			<p>Please note that any information asked for on this site is used purely for the purpose of getting the books you
+			may be interested in to the gigs you are going to, and no other purpose. For example, if you enter an email address it will not
+			even be added to the Jazz Leeds mailing list. Any money paid for the books goes into Jazz Leeds funds (in the same way
+			that the raffle money does).</p>
+			<p>To get started, click on <a href="booklist.php">Book List</a>. This will show a searchable table with the books listed,
+			and let you tick which ones you are interested in. Then the <a href="interested.php">Interested List Page</a> lets you
+			enter your (minimal) details and sends them in an email to us. See the <a href="help.php" target="_blank">Help Page</a> for
+			more information.</p>
+		</div>
+	</div>
+</div>
 
 <div class="panel panel-primary">
 	<div class="panel-heading">
@@ -40,5 +59,18 @@ go to the Interested list, and send us a message so we can bring the books along
 		</div>
 	</div>
 </div>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title accordian-toggle collapsed" data-toggle="collapse" data-target="#me">Bragging Rights</h3>
+	</div>
+	<div id="me" class="panel-collapse collapse">
+		<div class="panel-body">
+			<p>This site was written for <a href="http://jazzleeds.org.uk">Jazz Leeds</a> by <a href="mailto:trev@tprinn.co.uk">Trevor Prinn</a>.</p>
+			<p>The site is open source, and sources can be obtained from <a href="https://github.com/trevorprinn/jazzleedsbooks" target="_blank">Github</a>.</p>
+		</div>
+	</div>
+</div>
+
 
 <?php include('footer.php'); ?>
