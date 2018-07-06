@@ -13,9 +13,14 @@ try {
 	set_error_handler('errorhandler', E_ALL);
 	$postdata = file_get_contents('php://input');
 
-	mail('trev@tprinn.co.uk', 'Jazz Leeds Book Request', $postdata, 'From: noreply@jazzleedsbooks.org.uk');
+	$sent = mail('trev@tprinn.co.uk', 'Jazz Leeds Book Request', $postdata, 'From: trev@tprinn.co.uk');
+	if ($sent) {
+		$result['success'] = true;
+	} else {
+		$result['success'] = false;
+		$result['error'] = 'The email was not accepted by the server.';
+	}
 	
-	$result['success'] = true;
 	echo json_encode($result);
 } catch (Exception $e) {
 	$result['success'] = false;

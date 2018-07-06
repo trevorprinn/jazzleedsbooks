@@ -67,7 +67,7 @@ include('header.php');
 						<tbody>
 							<tr ng-repeat='g in gigs'>
 								<td><input type='checkbox' ng-model='g.Going'></td>
-								<td>{{formatDate(g.Date, 'DD/MM/YYYY')}}</td>
+								<td>{{formatDate(g.Date, 'ddd DD/MM/YYYY')}}</td>
 								<td>{{formatDate(g.Date, 'YYMMDDDD')}}</td>
 								<td>{{g.Band}}</td>
 								<td>{{g.Venue}}</td>
@@ -186,7 +186,7 @@ app.controller('interested', function($scope, $http, $window) {
 	getGoingGigs = function() {
 		var gigs = [];
 		for (var i = 0; i < $scope.gigs.length; i++) {
-			if ($scope.gigs[i].Going) gigs.push(gigs[i]);
+			if ($scope.gigs[i].Going) gigs.push($scope.gigs[i]);
 		}
 		return gigs;
 	};
@@ -209,6 +209,7 @@ app.controller('interested', function($scope, $http, $window) {
 					$window.location.href = 'index.php';
 				} else {
 					$scope.errorMsg = response.data.error;
+					alert(response.data.error);
 				}
 			});
 	};	

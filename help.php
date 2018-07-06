@@ -15,8 +15,6 @@
 			have available. There are far too many books for us to bring them all along to every gig, so
 			if you are interested in seeing or buying any of them you will need to let us know which ones you
 			are interested in, and which gigs you will be going to.</p>
-			<p>It can take a few seconds for the list to appear. This is because it has to retrieve it from LibraryThing
-			every time. Their licence does not allow us to store the list on this website.</p>
 			
 			<p>Initially, you will just see a page of the first 10 books (in alphabetical order by title). You can:
 			<ul>

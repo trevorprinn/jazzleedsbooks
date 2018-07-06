@@ -1,6 +1,3 @@
-*.php~
-*.html~
-*.json~
-*.css~
-*.txt~
+*.*~
 /giglist.json
+/books.json

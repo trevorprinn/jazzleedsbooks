@@ -83,12 +83,24 @@ app.controller('booklist', function($scope, $http) {
 		{ targets: [5], orderable: false }
 	];
 	
-	//http://www.librarything.com/api_getdata.php?userid=jazzleeds&key=2837672999&booksort=title&max=350&showTags=1&responseType=json
-	$http.get('https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20json%20where%20url%20%3D%20%22http%3A%2F%2Fwww.librarything.com%2Fapi_getdata.php%3Fuserid%3Djazzleeds%26key%3D2837672999%26booksort%3Dtitle%26max%3D350%26showTags%3D1%26responseType%3Djson%22&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys')
+	// url for the book list is http://www.librarything.com/api_getdata.php?userid=jazzleeds&key=2837672999&booksort=title&max=350&showTags=1&responseType=json&showCollections=1 	
+	$http.post('getbooks.php')
 		.then(function(response) {
 			$scope.errorMsg = null;
 			$scope.response = null;
-			$scope.books = response.data.query.results.json.books;
+			var books = response.data.books;
+			$.each(books, function(bookKey, book) {
+				$.each(book.collections, function(collKey, coll) {
+					var del = false;
+					if (coll == 'Sold') {
+						del = true;
+					}
+					if (del) {
+						delete books[bookKey];
+					}
+				});
+			});
+			$scope.books = books;
 			applyInterested();
 		}, function(response) {
 			$scope.errorMsg = response;
