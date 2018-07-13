@@ -54,6 +54,7 @@ include('header.php');
 			</div>		
 			<div id="gigs" class="panel-collapse collapse in">
 				<div class="panel-body">
+					<p>Please note that it is generally easier for us to bring the books to Sunday afternoon gigs than to Thursday evening gigs.</p>
 					<table class='table' datatable='ng' dt-options='dtGigOptions' dt-column-defs='dtGigColumns'>
 						<thead>
 							<tr>
