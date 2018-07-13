@@ -2,7 +2,7 @@
 include('header.php'); 
 ?>
 
-<h1>Leeds Jazz Book Collection</h1>
+<h1>Jazz Leeds Book Collection</h1>
 
 <div class="panel panel-info">
 	<div class="panel-heading">
