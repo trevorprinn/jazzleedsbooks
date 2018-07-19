@@ -92,7 +92,7 @@ app.controller('booklist', function($scope, $http) {
 			$.each(books, function(bookKey, book) {
 				$.each(book.collections, function(collKey, coll) {
 					var del = false;
-					if (coll == 'Sold') {
+					if (coll == 'Sold' || coll == 'Reserved') {
 						del = true;
 					}
 					if (del) {
